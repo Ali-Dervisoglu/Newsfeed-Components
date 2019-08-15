@@ -85,6 +85,25 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  { 
+    title: "Hello World What's Up",
+    date: 'Jun 21st, 2019',
+    firstParagraph: `Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up!
+    Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! 
+    Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! 
+    Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up!  `,
+
+    secondParagraph: `Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! 
+    Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! 
+    Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! 
+    Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! 
+    Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! `,
+
+    thirdParagraph: `Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! 
+    Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! 
+    Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! 
+    Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! Hello World What's Up! `
   }
 ];
 
@@ -112,3 +131,45 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+function compCreator(object) {
+  let compDiv = document.createElement("div");
+  compDiv.classList.add("article");
+  let compH2 = document.createElement("h2");
+  compH2.textContent = object.title;
+  let compDate = document.createElement("p");
+  compDate.classList.add("date");
+  compDate.textContent = object.date;
+  let compP1 = document.createElement("p");
+  compP1.textContent = object.firstParagraph;
+  let compP2 = document.createElement("p");
+  compP2.textContent = object.secondParagraph;
+  let compP3 = document.createElement("p");
+  compP3.textContent = object.thirdParagraph;
+  let compSpan = document.createElement("span");
+  compSpan.classList.add("expandButton");
+  compSpan.textContent = "click";
+
+  compSpan.addEventListener("click", () => {
+    if (compDiv.classList.contains("article-open")) {
+      compDiv.classList.remove("article-open");
+    }
+    else {
+      compDiv.classList.add("article-open");
+    }
+  })
+
+  compDiv.appendChild(compH2);
+  compDiv.appendChild(compDate);
+  compDiv.appendChild(compP1);
+  compDiv.appendChild(compP2);
+  compDiv.appendChild(compP3);
+  compDiv.appendChild(compSpan);
+  return compDiv;
+}
+
+let articles = document.querySelector(".articles");
+
+for (let i = 0; i < data.length; i++) { 
+  articles.appendChild(compCreator(data[i]));
+}
