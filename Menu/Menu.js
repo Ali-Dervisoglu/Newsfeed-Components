@@ -38,11 +38,16 @@ function menuCreator(array) {
   let menuDiv = document.createElement("div");
   menuDiv.classList.add("menu");
   let menuUl = document.createElement("ul");
-  let menuLi = document.createElement("li");
-  for (let i = 0; i < array.length; i++) {
-    menuLi.textContent = array[i];
-    menuUl.appendChild(menuLi);
+  let listItems = [];
+  for (i=0; i<array.length; i++){
+    listItems.push(document.createElement("li"));
+    
   }
+  for (i=0; i<listItems.length; i++){
+    listItems[i].textContent = array[i];
+    menuUl.appendChild(listItems[i]);
+  }
+  
   menuDiv.appendChild(menuUl);
 
   let menuButton = document.querySelector(".menu-button");
@@ -55,10 +60,13 @@ function menuCreator(array) {
     }
   })
 
+  
+
   return menuDiv;
 }
 
-let menuBut = document.querySelector(".menu-button");
-menuBut.appendChild(menuCreator(menuItems));
+
+let header = document.querySelector(".header");
+header.appendChild(menuCreator(menuItems));
 
 
