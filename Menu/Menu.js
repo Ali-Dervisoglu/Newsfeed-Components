@@ -52,19 +52,12 @@ function menuCreator(array) {
 
   let menuButton = document.querySelector(".menu-button");
   menuButton.addEventListener("click", () => {
-    if (menuButton.classList.contains("menu--open")) {
-      menuButton.classList.remove("menu--open");
-    }
-    else {
-      menuButton.classList.add("menu--open");
-    }
-  })
-
-  
+  menuDiv.classList.toggle("menu--open");
+})
 
   return menuDiv;
-}
 
+}
 
 let header = document.querySelector(".header");
 header.appendChild(menuCreator(menuItems));
